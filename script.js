@@ -31,7 +31,7 @@ buttons.forEach((e)=>{
                 value = false
                 arr[parseInt(a.target.dataset.id)] = "O"
             }
-            if(arr.includes(undefined) == false)
+            if(arr.includes(undefined) == false && a.target.dataset.id != 0)
             {
                 winner.innerHTML = "Match Draw"
             }
