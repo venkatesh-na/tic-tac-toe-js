@@ -9,6 +9,7 @@ reset.addEventListener("click",()=>{
     buttons.forEach((e)=>{
         e.innerHTML = ""
         e.disabled = false
+        value = false;
     })
 })
 buttons.forEach((e)=>{
