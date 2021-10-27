@@ -8,6 +8,7 @@ reset.addEventListener("click",()=>{
     arr = []
     buttons.forEach((e)=>{
         e.innerHTML = ""
+        e.disables = false
     })
 })
 buttons.forEach((e)=>{
@@ -40,7 +41,7 @@ buttons.forEach((e)=>{
     })
 const winnerCheck = ()=>{
     //012 036 048 256 678 345 147
-    let arr1 = [[0,1,2],[0,3,6],[0,4,8],[2,4,6],[6,7,8],[3,4,5],[1,4,7]]
+    let arr1 = [[0,1,2],[0,3,6],[0,4,8],[2,4,6],[2,5,8],[6,7,8],[3,4,5],[1,4,7]]
     arr1.forEach((e)=>{
         if (arr[e[0]] == "X" && arr[e[1]] == "X" && arr[e[2]] == "X") {
             winner.innerHTML = "X wins"
