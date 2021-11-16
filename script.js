@@ -23,6 +23,24 @@ buttons.forEach((e)=>{
                 e.style.color = "red"
                 value = true
                 arr[parseInt(a.target.dataset.id)] = "X"
+                 let newArr = []
+                for (let i = 0; i < 9; i++) {
+                    if (arr[i] == undefined) {
+                        newArr.push(i)
+                    }
+                }
+
+            console.log(newArr)
+                if(newArr.length > 0)
+                {
+                let random = Math.floor(Math.random() * newArr.length)
+                arr[newArr[random]] = "O"
+                buttons[newArr[random]].innerHTML = "O"
+                buttons[newArr[random]].disabled = true
+                buttons[newArr[random]].style.color = "blue"
+                value = false
+                console.log(arr)
+                }
             }
             else
             {
@@ -32,6 +50,7 @@ buttons.forEach((e)=>{
                 value = false
                 arr[parseInt(a.target.dataset.id)] = "O"
             }
+            
             if(arr.includes(undefined) == false && a.target.dataset.id != 0)
             {
                 winner.innerHTML = "Match Draw"
