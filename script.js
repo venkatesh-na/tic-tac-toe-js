@@ -1,10 +1,20 @@
 const buttons = document.querySelectorAll(".buttons button")
 const winner = document.querySelector(".winner")
 const reset = document.querySelector(".reset")
+const vsfriend = document.querySelector(".vsfriend")
+const player = document.querySelector(".player")
+let multi = false
+player.innerHTML = "PLAYER VS COMPUTER"
+vsfriend.addEventListener("click",()=>{
+    multi = true
+    player.innerHTML = "PLAYER VS PLAYER"
+})
 let value = false
 let arr = new Array(9)
 reset.addEventListener("click",()=>{
+     player.innerHTML = "PLAYER VS COMPUTER"
     winner.innerHTML = ""
+    vsfriend.disabled = false
     arr = new Array(9)
     buttons.forEach((e)=>{
         e.innerHTML = ""
@@ -14,6 +24,7 @@ reset.addEventListener("click",()=>{
 })
 buttons.forEach((e)=>{
     e.addEventListener("click",(a)=>{
+        vsfriend.disabled = true
         if(winner.innerHTML.length == 0)
         {
             if(value == false)
@@ -23,33 +34,35 @@ buttons.forEach((e)=>{
                 e.style.color = "red"
                 value = true
                 arr[parseInt(a.target.dataset.id)] = "X"
-                 let newArr = []
-                for (let i = 0; i < 9; i++) {
-                    if (arr[i] == undefined) {
-                        newArr.push(i)
-                    }
-                }
-
-            console.log(newArr)
-                if(newArr.length > 0)
+                if(multi == false)
                 {
-                let random = Math.floor(Math.random() * newArr.length)
-                arr[newArr[random]] = "O"
-                buttons[newArr[random]].innerHTML = "O"
-                buttons[newArr[random]].disabled = true
-                buttons[newArr[random]].style.color = "blue"
-                value = false
-                console.log(arr)
-                }
-            }
-            else
-            {
-                e.innerHTML = "O"
-                e.disabled = true
-                e.style.color = "blue"
-                value = false
-                arr[parseInt(a.target.dataset.id)] = "O"
-            }
+                                let newArr = []
+                                for (let i = 0; i < 9; i++) 
+                                {
+                                    if (arr[i] == undefined) 
+                                    {
+                                        newArr.push(i)
+                                    }
+                                }
+                                if(newArr.length > 0)
+                                {
+                                let random = Math.floor(Math.random() * newArr.length)
+                                arr[newArr[random]] = "O"
+                                buttons[newArr[random]].innerHTML = "O"
+                                buttons[newArr[random]].disabled = true
+                                buttons[newArr[random]].style.color = "blue"
+                                value = false
+                            }
+                        }
+                    }
+                    else
+                    {
+                            e.innerHTML = "O"
+                            e.disabled = true
+                            e.style.color = "blue"
+                            value = false
+                            arr[parseInt(a.target.dataset.id)] = "O"
+                    }
             
             if(arr.includes(undefined) == false && a.target.dataset.id != 0)
             {
