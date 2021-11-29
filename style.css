@@ -11,13 +11,17 @@ body {
   align-items: center;
   flex-direction: column;
 }
+.player {
+  color: rgb(207, 198, 142);
+  margin-bottom: 10px;
+}
 .buttons button {
   width: 70px;
   height: 70px;
   background-color: white;
   font-size: 2.5rem;
   border: 1px solid grey;
-  outline:none;
+  outline: none;
 }
 .buttons {
   display: grid;
@@ -67,6 +71,12 @@ body {
 }
 .reset:hover {
   animation: button 0.5s linear infinite;
+}
+.vsfriend {
+  background-color: white;
+  border: none;
+  box-shadow: 0px 0px 1px 1px grey;
+  padding: 5px 25px;
 }
 @keyframes button {
   0% {
